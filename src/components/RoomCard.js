@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     card: {
         flex: 1,
         height: 120,
-        marginTop: 40,
+        marginTop: 30,
     },
     spacing: {
         flex: 1,
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     },
     bgStyles: {
         borderRadius: 20,
-        backgroundColor: "#E3E3E3",
+        backgroundColor: "#F5F5F5",
     },
     cardInfo:{
         left: 130

@@ -8,8 +8,11 @@ import InputSpinner from "react-native-input-spinner";
 export default function RoomFilter () {
 
     const [date, setDate] = useState(new Date());
+    const [date2, setDate2] = useState(new Date());
     const [mode, setMode] = useState('date');
+    const [mode2, setMode2] = useState('date2');
     const [show, setShow] = useState(false);
+    const [show2, setShow2] = useState(false);
     const [text, setText] = useState('Ingrese una fecha');
     const [text2, setText2] = useState('Ingrese una fecha');
 
@@ -22,24 +25,28 @@ export default function RoomFilter () {
         let fDate = tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear();
         setText(fDate)
 
-        console.log(fDate)
+        console.log("text1",fDate)
     }
 
-    const onChange2 = (event, selectedDate) => {
-        const currentDate = selectedDate || date;
-        setShow(Platform.OS === 'ios');
-        setDate(currentDate);
+    const onChange2 = (event2, selectedDate2) => {
+        const currentDate2 = selectedDate2 || date2;
+        setShow2(Platform.OS === 'ios');
+        setDate2(currentDate2);
 
-        let tempDate = new Date (currentDate);
-        let fDate2 = tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear();
+        let tempDate2 = new Date (currentDate2);
+        let fDate2 = tempDate2.getDate() + '/' + (tempDate2.getMonth() + 1) + '/' + tempDate2.getFullYear();
         setText2(fDate2)
-
-        console.log(fDate2)
+        console.log("text2",fDate2)
     }
 
     const showMode = (currentMode) => {
         setShow(true)
         setMode(currentMode)
+    }
+
+    const showMode2 = (currentMode2) => {
+        setShow2(true)
+        setMode2(currentMode2)
     }
 
     return(
@@ -79,7 +86,7 @@ export default function RoomFilter () {
                 <View style={styles.container}>
                     <View style={{margin: 5, marginHorizontal: 20}}>
                         <Text style={styles.dateHeader}>Fecha de Salida</Text>
-                        <TouchableWithoutFeedback onPress={() => showMode('date')}>
+                        <TouchableWithoutFeedback onPress={() => showMode2('date2')}>
                             <View style={styles.card}>
                                 <View style={styles.spacing}>
                                     <View style={styles.bgStyles}>
@@ -88,16 +95,16 @@ export default function RoomFilter () {
                                 </View>
                             </View>
                         </TouchableWithoutFeedback>
-                        {show && (
+                        {show2 && (
                             <DatePicker
-                                testID='datePicker'
-                                value={date}
-                                mode={mode}
+                                testID='datePicker2'
+                                value={date2}
+                                mode={mode2}
                                 display='default'
                                 onChange={onChange2}
-                                onConfirm={(date) => {
+                                onConfirm={(date2) => {
                                     setOpen(false)
-                                    setDate(date)
+                                    setDate2(date2)
                                 }}
                                 onCancel={() => {
                                     setOpen(false)

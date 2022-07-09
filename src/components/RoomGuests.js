@@ -8,7 +8,6 @@ export default function RoomGuests(props) {
 
     const [adults, setAdults] = useState(0);
     const [children, setChildren] = useState(0);
-    const [infants, setInfants] = useState(0);
 
     const navigation = useNavigation();
     const route = useRoute();
@@ -20,57 +19,49 @@ export default function RoomGuests(props) {
                 <View style={styles.container}>
                     <View style={{margin: 5}}>
                         <View style={styles.filterListContainer}>
-                            <View style={styles.container}>
-                                <View style={{margin: 5}}>
-                                    <View>
-                                        <Text style={styles.dateHeader}>Adultos</Text>
-                                    </View>
-                                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                                        <Pressable
-                                            onPress={() => setAdults(Math.max(0, adults - 1))}
-                                            style={styles.button}>
-                                            <Text style={{fontSize: 20, color: '#474747'}}>-</Text>
-                                        </Pressable>
+                            <View>
+                                <Text style={styles.dateHeader}>Adultos</Text>
+                            </View>
+                            <View style={{flexDirection: 'row', alignItems: 'center', marginHorizontal: 15}}>
+                                <Pressable
+                                    onPress={() => setAdults(Math.max(0, adults - 1))}
+                                    style={styles.button}>
+                                    <Text style={{fontSize: 20, color: '#474747'}}>-</Text>
+                                </Pressable>
 
-                                        <Text style={{marginHorizontal: 20, fontSize: 16}}>{adults}</Text>
+                                <Text style={{marginHorizontal: 10, fontSize: 16}}>{adults}</Text>
 
-                                        <Pressable
-                                            onPress={() => setAdults(adults + 1)}
-                                            style={styles.button}>
-                                            <Text style={{fontSize: 20, color: '#474747'}}>+</Text>
-                                        </Pressable>
-                                    </View>
-                                </View>
+                                <Pressable
+                                    onPress={() => setAdults(adults + 1)}
+                                    style={styles.button}>
+                                    <Text style={{fontSize: 20, color: '#474747'}}>+</Text>
+                                </Pressable>
                             </View>
                         </View>
                     </View>
                 </View>
                 <View>
                     <View style={styles.container}>
-                        <View style={{margin: 5, marginHorizontal: 40}}>
+                        <View style={{margin: 5, marginHorizontal: -15}}>
                             <View style={styles.filterListContainer}>
-                                <View style={styles.container}>
-                                    <View style={{margin: 5}}>
-                                        <View>
-                                            <Text style={styles.dateHeader}>Niños</Text>
-                                        </View>
+                                <View>
+                                    <Text style={styles.dateHeader}>Niños</Text>
+                                </View>
 
-                                        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                                            <Pressable
-                                                onPress={() => setChildren(Math.max(0, children - 1))}
-                                                style={styles.button}>
-                                                <Text style={{fontSize: 20, color: '#474747'}}>-</Text>
-                                            </Pressable>
+                                <View style={{flexDirection: 'row', alignItems: 'center', marginHorizontal: 15}}>
+                                    <Pressable
+                                        onPress={() => setChildren(Math.max(0, children - 1))}
+                                        style={styles.button}>
+                                        <Text style={{fontSize: 20, color: '#474747'}}>-</Text>
+                                    </Pressable>
 
-                                            <Text style={{marginHorizontal: 20, fontSize: 16}}>{children}</Text>
+                                    <Text style={{marginHorizontal: 10, fontSize: 16}}>{children}</Text>
 
-                                            <Pressable
-                                                onPress={() => setChildren(children + 1)}
-                                                style={styles.button}>
-                                                <Text style={{fontSize: 20, color: '#474747'}}>+</Text>
-                                            </Pressable>
-                                        </View>
-                                    </View>
+                                    <Pressable
+                                        onPress={() => setChildren(children + 1)}
+                                        style={styles.button}>
+                                        <Text style={{fontSize: 20, color: '#474747'}}>+</Text>
+                                    </Pressable>
                                 </View>
                             </View>
                         </View>
@@ -84,7 +75,7 @@ export default function RoomGuests(props) {
 const styles = StyleSheet.create({
     filterListContainerGuests: {
         flexDirection: "row",
-        paddingHorizontal: 10,
+        paddingHorizontal: 15,
         marginTop: -1
     },
     filterListContainer: {
@@ -105,17 +96,10 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         width: 30,
         height: 30,
-        borderRadius: 15,
-        borderColor: '#676767',
+        borderRadius: 8,
+        borderColor: '#F5F5F5',
+        backgroundColor: '#F5F5F5',
         justifyContent: 'center',
         alignItems: 'center',
-    },
-    row: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingVertical: 20,
-        marginHorizontal: 20,
-        borderBottomWidth: 1,
-        borderColor: 'lightgrey',
     }
 });

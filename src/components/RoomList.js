@@ -35,7 +35,7 @@ export default function RoomList(props) {
             <View style={styles.container}>
                 <FlatList
                     data={rooms}
-                    showsVerticalScrollIndicator={false}
+                    showsVerticalScrollIndicator={true}
                     keyExtractor={(room) => String(room.id)}
                     renderItem={({item}) => <RoomCard room={item} />}
                     contentContainerStyle={styles.flatListContentContainer}
@@ -47,14 +47,17 @@ export default function RoomList(props) {
 
 const styles = StyleSheet.create({
     header:{
-        paddingHorizontal: 20,
+        paddingHorizontal: 30,
         marginTop: -20
     },
     flatListContentContainer: {
         paddingHorizontal: 5,
+        paddingBottom: 400
     },
     container:{
-        marginBottom: 0
+        padding: 2,
+        display: "flex",
+        marginBottom: 10
     },
     button:{
         backgroundColor: "#18395e",

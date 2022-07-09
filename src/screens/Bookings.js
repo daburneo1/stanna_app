@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { getRoomsApi } from "../navigation/api/stanna";
+import { getRoomsApi, getRoomDetailsByUrlApi} from "../navigation/api/stanna";
+import RoomList from "../components/RoomList";
 
 export default function BookingsScreen () {
+    const [rooms, setRooms] = useState([]);
 
     useEffect(() => {
         (async() => {
@@ -14,29 +16,31 @@ export default function BookingsScreen () {
     const loadRooms = async () => {
         try {
             const response = await getRoomsApi();
-            console.log('ok')
-            console.log(response);
+
+            const roomsArray = []
+            for await (const room of response){
+                const roomDetails = await getRoomDetailsByUrlApi(room.url)
+
+                roomsArray.push({
+                    nombre: roomDetails.nombre,
+                    tipo: roomDetails.tipo,
+                    imagen: roomDetails.imagen.url,
+                    precio: roomDetails.precio,
+                    ranking: roomDetails.ranking,
+                    descripcion: roomDetails.descripcion,
+                })
+
+            }
+
+            setRooms([... rooms, ...roomsArray]);
         } catch (error) {
             console.error(error)
         }
-    }
+    };
 
     return(
         <SafeAreaView style={{backgroundColor: "white", flex: 1}}>
-            <View style={style.header}>
-                <View>
-                    <Text>Generamos las mejores opciones</Text>
-                    <Text style={{fontWeight: 'bold', marginTop:5}}>basado en tus preferencias</Text>
-                </View>
-            </View>
+            <RoomList rooms={rooms}/>
         </SafeAreaView>
     )
 }
-
-const style = StyleSheet.create({
-    header:{
-        paddingVertical:10,
-        marginBottom: 10,
-        paddingHorizontal: 20
-    }
-})

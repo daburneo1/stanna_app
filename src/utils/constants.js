@@ -1,1 +1,1 @@
-export const API_HOST = "https://apimocha.com/stanna";
+export const API_HOST = "https://apimocha.com/stanna1";

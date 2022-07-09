@@ -13,3 +13,13 @@ export async function getRoomsApi(){
         throw error;
     }
 }
+
+export async function getRoomDetailsByUrlApi(url) {
+    try {
+        const response = await fetch(url);
+        const result = await  response.json()
+        return result;
+    } catch (e){
+        throw(e)
+    }
+}

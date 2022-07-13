@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {View, Text, FlatList, StyleSheet, TouchableWithoutFeedback, Pressable, ActivityIndicator } from "react-native";
+import {View, Text, FlatList, StyleSheet, TouchableWithoutFeedback, Pressable, ActivityIndicator} from "react-native";
 
 import RoomCard from "./RoomCard";
 import RoomFilter from "./RoomFilter";
@@ -13,47 +13,51 @@ export default function RoomList() {
     const [fecha2, setFecha2] = useState('FECHA2')
     const [adults, setAdults] = useState(0)
     const [childrens, setChildrens] = useState(0)
+    const [load, setLoad] = useState(false)
 
-    // const setFecha = (fecha) => {
-    //     console.log("NuevaFecha: ", fecha)
-    // }
-
-
-    useEffect(() => {
-        (async() => {
-            await loadRooms();
-        })();
-    }, []);
+    // useEffect(() => {
+    //     (async () => {
+    //         await loadRooms();
+    //     })();
+    // }, []);
 
     const loadRooms = async () => {
-        try {
-            const response = await getRoomsApi();
+        // if (load) {
+            try {
+                console.log(fecha1, fecha2, adults, childrens)
+                const response = await getRoomsApi();
+                const roomsArray = []
+                for await (const room of response) {
+                    console.log("Response", typeof response)
+                    console.log("Room", typeof room)
+                    const roomDetails = await getRoomDetailsByUrlApi(room.url)
 
-            const roomsArray = []
-            for await (const room of response) {
-                const roomDetails = await getRoomDetailsByUrlApi(room.url)
-
-                roomsArray.push({
-                    id: roomDetails.id,
-                    nombre: roomDetails.nombre,
-                    tipo: roomDetails.tipo,
-                    imagen: roomDetails.imagen,
-                    precio: roomDetails.precio,
-                    ranking: roomDetails.ranking,
-                    descripcion: roomDetails.descripcion,
-                });
+                    roomsArray.push({
+                        id: roomDetails.id,
+                        nombre: roomDetails.nombre,
+                        tipo: roomDetails.tipo,
+                        imagen: roomDetails.imagen,
+                        precio: roomDetails.precio,
+                        ranking: roomDetails.ranking,
+                        descripcion: roomDetails.descripcion,
+                        servicios: roomDetails.servicios
+                    });
+                }
+                setLoad(false)
+                setRooms([...rooms, ...roomsArray]);
+            } catch (error) {
+                console.error(error)
             }
-            setRooms([... rooms, ...roomsArray]);
-        } catch (error) {
-            console.error(error)
-        }
+        // }
+
+
     };
 
     const loadMore = () => {
         loadRooms()
     }
 
-    return(
+    return (
         <View>
             <View style={styles.header}>
                 <View>
@@ -65,13 +69,13 @@ export default function RoomList() {
                 </View>
             </View>
             <View>
-                <RoomFilter setFecha1={setFecha1} setFecha2={setFecha2} />
+                <RoomFilter setFecha1={setFecha1} setFecha2={setFecha2}/>
             </View>
             <View>
-                <RoomGuests setAdults = {setAdults} setChildrens={setChildrens}/>
+                <RoomGuests setAdults={setAdults} setChildrens={setChildrens}/>
             </View>
             <View>
-                <TouchableWithoutFeedback onPress={() => loadRooms()}>
+                <TouchableWithoutFeedback onPress={loadRooms}>
                     <View style={styles.button}>
                         <Text style={styles.textButton}>Buscar</Text>
                     </View>
@@ -82,7 +86,7 @@ export default function RoomList() {
                     data={rooms}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(room) => String(room.id)}
-                    renderItem={({item}) => <RoomCard room={item} />}
+                    renderItem={({item}) => <RoomCard room={item}/>}
                     contentContainerStyle={styles.flatListContentContainer}
                     onEndReached={loadMore}
                     onEndReachedThreshold={0.1}
@@ -100,7 +104,7 @@ export default function RoomList() {
 }
 
 const styles = StyleSheet.create({
-    header:{
+    header: {
         paddingHorizontal: 30,
         marginTop: -20
     },
@@ -108,12 +112,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: 5,
         paddingBottom: 400
     },
-    container:{
+    container: {
         padding: 2,
         display: "flex",
         marginBottom: 10
     },
-    button:{
+    button: {
         backgroundColor: "#18395e",
         borderRadius: 15,
         width: 120,

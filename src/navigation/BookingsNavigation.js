@@ -9,7 +9,7 @@ export default function BookingsNavigation() {
     return(
         <Stack.Navigator>
             <Stack.Screen name="Bookings" component={BookingsScreen} options={{title: "Generar Reservación", headerTitleAlign: "Center"}}/>
-            <Stack.Screen name="RoomDetail" component={RoomDetailScreen} options={{title: "Detalle de la Habitación", headerTitleAlign: "Center"}}/>
+            <Stack.Screen name="RoomDetail" component={RoomDetailScreen} options={{title: "", headerTransparent: true}}/>
         </Stack.Navigator>
     )
 }

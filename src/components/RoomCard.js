@@ -9,7 +9,16 @@ export default function RoomCard(props) {
 
     const goToRoom = () => {
         console.log(`Vamos a la habitacion: ${room.id}`)
-        navigation.navigate('RoomDetail', { id: room.id })
+        navigation.navigate('RoomDetail', {
+            id: room.id,
+            nombre: room.nombre,
+            tipo: room.tipo,
+            imagen: room.imagen,
+            precio: room.precio,
+            ranking: room.ranking,
+            descripcion: room.descripcion,
+            servicios: room.servicios
+        })
     }
 
     return(

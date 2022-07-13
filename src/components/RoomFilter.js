@@ -5,7 +5,7 @@ import DatePicker from '@react-native-community/datetimepicker';
 import Icon from "react-native-vector-icons/FontAwesome5";
 import InputSpinner from "react-native-input-spinner";
 
-export default function RoomFilter () {
+export default function RoomFilter (props) {
 
     const [date, setDate] = useState(new Date());
     const [date2, setDate2] = useState(new Date());
@@ -24,7 +24,7 @@ export default function RoomFilter () {
         let tempDate = new Date (currentDate);
         let fDate = tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear();
         setText(fDate)
-
+        props.setFecha1(fDate)
         console.log("text1",fDate)
     }
 
@@ -36,7 +36,9 @@ export default function RoomFilter () {
         let tempDate2 = new Date (currentDate2);
         let fDate2 = tempDate2.getDate() + '/' + (tempDate2.getMonth() + 1) + '/' + tempDate2.getFullYear();
         setText2(fDate2)
+        props.setFecha2(fDate2)
         console.log("text2",fDate2)
+
     }
 
     const showMode = (currentMode) => {
@@ -105,6 +107,7 @@ export default function RoomFilter () {
                                 onConfirm={(date2) => {
                                     setOpen(false)
                                     setDate2(date2)
+                                    // setFecha(date2)
                                 }}
                                 onCancel={() => {
                                     setOpen(false)

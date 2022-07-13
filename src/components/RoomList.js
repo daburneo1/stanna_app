@@ -1,13 +1,58 @@
-import React from "react";
-import {View, Text, FlatList, StyleSheet, TouchableWithoutFeedback} from "react-native";
+import React, {useEffect, useState} from "react";
+import {View, Text, FlatList, StyleSheet, TouchableWithoutFeedback, Pressable, ActivityIndicator } from "react-native";
 
 import RoomCard from "./RoomCard";
 import RoomFilter from "./RoomFilter";
 import RoomGuests from "./RoomGuests";
+import {getRoomDetailsByUrlApi, getRoomsApi} from "../navigation/api/stanna";
 
-export default function RoomList(props) {
-    const { rooms } = props;
-    console.log(rooms)
+export default function RoomList() {
+
+    const [rooms, setRooms] = useState([]);
+    const [fecha1, setFecha1] = useState('FECHA')
+    const [fecha2, setFecha2] = useState('FECHA2')
+    const [adults, setAdults] = useState(0)
+    const [childrens, setChildrens] = useState(0)
+
+    // const setFecha = (fecha) => {
+    //     console.log("NuevaFecha: ", fecha)
+    // }
+
+
+    useEffect(() => {
+        (async() => {
+            await loadRooms();
+        })();
+    }, []);
+
+    const loadRooms = async () => {
+        try {
+            const response = await getRoomsApi();
+
+            const roomsArray = []
+            for await (const room of response) {
+                const roomDetails = await getRoomDetailsByUrlApi(room.url)
+
+                roomsArray.push({
+                    id: roomDetails.id,
+                    nombre: roomDetails.nombre,
+                    tipo: roomDetails.tipo,
+                    imagen: roomDetails.imagen,
+                    precio: roomDetails.precio,
+                    ranking: roomDetails.ranking,
+                    descripcion: roomDetails.descripcion,
+                });
+            }
+            setRooms([... rooms, ...roomsArray]);
+        } catch (error) {
+            console.error(error)
+        }
+    };
+
+    const loadMore = () => {
+        loadRooms()
+    }
+
     return(
         <View>
             <View style={styles.header}>
@@ -20,13 +65,13 @@ export default function RoomList(props) {
                 </View>
             </View>
             <View>
-                <RoomFilter />
+                <RoomFilter setFecha1={setFecha1} setFecha2={setFecha2} />
             </View>
             <View>
-                <RoomGuests />
+                <RoomGuests setAdults = {setAdults} setChildrens={setChildrens}/>
             </View>
             <View>
-                <TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={() => loadRooms()}>
                     <View style={styles.button}>
                         <Text style={styles.textButton}>Buscar</Text>
                     </View>
@@ -35,10 +80,19 @@ export default function RoomList(props) {
             <View style={styles.container}>
                 <FlatList
                     data={rooms}
-                    showsVerticalScrollIndicator={true}
+                    showsVerticalScrollIndicator={false}
                     keyExtractor={(room) => String(room.id)}
                     renderItem={({item}) => <RoomCard room={item} />}
                     contentContainerStyle={styles.flatListContentContainer}
+                    onEndReached={loadMore}
+                    onEndReachedThreshold={0.1}
+                    ListFooterComponent={
+                        <ActivityIndicator
+                            size="large"
+                            style={styles.spinner}
+                            color="#18395e"
+                        />
+                    }
                 />
             </View>
         </View>
@@ -67,10 +121,14 @@ const styles = StyleSheet.create({
         marginHorizontal: "35%",
         marginTop: 10
     },
-    textButton:{
+    textButton: {
         color: "#fff",
         textAlign: "center",
         textAlignVertical: "center",
         fontWeight: "bold"
+    },
+    spinner: {
+        marginTop: 20,
+        marginBottom: 60
     }
 })

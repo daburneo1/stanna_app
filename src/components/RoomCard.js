@@ -1,12 +1,15 @@
 import React from "react";
 import { StyleSheet, View, Text, Image, TouchableWithoutFeedback } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5"
+import { useNavigation } from "@react-navigation/native";
 
 export default function RoomCard(props) {
     const { room } = props
+    const navigation = useNavigation();
 
     const goToRoom = () => {
-        console.log(`Vamos a la habitacion: ${room.nombre}`)
+        console.log(`Vamos a la habitacion: ${room.id}`)
+        navigation.navigate('RoomDetail', { id: room.id })
     }
 
     return(

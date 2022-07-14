@@ -7,7 +7,7 @@ const Stack = createStackNavigator();
 export default function AccountNavigation() {
     return(
         <Stack.Navigator>
-            <Stack.Screen name="Cloud" component={AccountScreen} options={{title: "Mi Cuenta", headerTitleAlign: "Center"}}/>
+            <Stack.Screen name="Cloud" component={AccountScreen} options={{title: "", headerTransparent: true}}/>
         </Stack.Navigator>
     )
 }

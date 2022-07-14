@@ -9,7 +9,7 @@ import BookingsNavigation from "./BookingsNavigation";
 // import DiaryScreen from "../screens/Diary";
 import DiaryNavigation from "./DiaryNavigation";
 // import CloudScreen from "../screens/Cloud";
-import CloudNavigation from "./CloudNavigation";
+import AccountNavigation from "./AccountNavigation";
 import HomeScreen from "../screens/Home";
 
 const Tab = createBottomTabNavigator();
@@ -36,10 +36,10 @@ export default function StannaNavigation() {
                     <Icon name="calendar" color={color} size={size}/>
                 )
             }}/>
-            <Tab.Screen name="Cloud" component={CloudNavigation} options={{
+            <Tab.Screen name="Cloud" component={AccountNavigation} options={{
                 tabBarLabel: "",
                 tabBarIcon: ({color, size}) => (
-                    <Icon name="cloud" color={color} size={size}/>
+                    <Icon name="user" color={color} size={size}/>
                 )
             }}/>
         </Tab.Navigator>

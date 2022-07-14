@@ -28,8 +28,6 @@ export default function RoomList() {
                 const response = await getRoomsApi();
                 const roomsArray = []
                 for await (const room of response) {
-                    console.log("Response", typeof response)
-                    console.log("Room", typeof room)
                     const roomDetails = await getRoomDetailsByUrlApi(room.url)
 
                     roomsArray.push({
@@ -40,10 +38,11 @@ export default function RoomList() {
                         precio: roomDetails.precio,
                         ranking: roomDetails.ranking,
                         descripcion: roomDetails.descripcion,
-                        servicios: roomDetails.servicios
+                        servicios: roomDetails.servicios,
+                        informacion: roomDetails.informacion
                     });
                 }
-                setLoad(false)
+
                 setRooms([...rooms, ...roomsArray]);
             } catch (error) {
                 console.error(error)

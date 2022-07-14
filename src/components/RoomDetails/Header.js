@@ -18,7 +18,7 @@ export default function Header(props) {
                 <View style={styles.backgroundImage}>
                     <Image source={{uri: image}} style={styles.image}/>
                 </View>
-                <View style={{margin: 20}}>
+                <View style={{marginTop: 20, marginHorizontal: 20}}>
                     <View style={styles.title}>
                         <Text style={{fontSize: 20, fontWeight: "bold"}}>
                             {name}

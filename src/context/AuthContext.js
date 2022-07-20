@@ -1,6 +1,7 @@
 import React, { useState, createContext } from "react";
+import axios from "axios";
 
-import{API_HOST} from "../../utils/constants";
+import{API_HOST} from "../utils/constants"
 
 export const AuthContext = createContext({
     user: undefined,
@@ -13,7 +14,7 @@ export function AuthProvider(props){
     const [auth, setAuth] = useState(undefined)
 
     const login = (userData) => {
-        setAuth(userData)
+        setAuth(userData);
     };
 
     const logout = () => {

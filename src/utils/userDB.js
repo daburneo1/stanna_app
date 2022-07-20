@@ -8,4 +8,5 @@ export const userDetails = {
     lastName: "Burneo",
     dni: "1104745540",
     phone: "0994548156",
+    email: "daburneo1@utpl.edu.ec"
 }

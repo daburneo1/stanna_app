@@ -1,8 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import {Text, View, StyleSheet, TextInput, Button, Keyboard, Image, TouchableWithoutFeedback} from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import {useNavigation} from "@react-navigation/native";
+import { user, userDetails } from "../../utils/userDB";
+import useAuth from "../../hooks/useAuth";
 
 export default function LoginForm() {
+
+    const [error, setError] = useState('')
+
+    const {login} = useAuth();
+
+    const navigation = useNavigation();
+
+    const formik = useFormik({
+        initialValues: initialValues(),
+        validationSchema: Yup.object(validationSchema()),
+        validateOnChange: true,
+        onSubmit: (formValue) => {
+            setError('')
+            const { email, password } = formValue;
+            console.log(email, password)
+            if (email !== user.email || password !== user.password){
+                setError('El correo electrónico o la contraseña son incorrectos')
+            } else {
+                login(userDetails)
+                console.log("Login correcto")
+                console.log(userDetails)
+            }
+        }
+    });
+
+    const registerNewUser = () => {
+        navigation.navigate('RegisterForm')
+    }
+
     return (
         <View style={styles.container}>
             <Image
@@ -11,17 +45,29 @@ export default function LoginForm() {
             />
             <View style={styles.card}>
                 <Text style={styles.text}>Correo Electrónico</Text>
-                <TextInput style={styles.input}></TextInput>
+                <TextInput
+                    style={styles.input}
+                    value={formik.values.email}
+                    onChangeText={(text) => formik.setFieldValue('email', text)}
+                />
             </View>
             <View style={styles.card}>
                 <Text style={styles.text}>Contraseña</Text>
-                <TextInput style={styles.input}></TextInput>
+                <TextInput
+                    style={styles.input}
+                    secureTextEntry={true}
+                    value={formik.values.password}
+                    onChangeText={(text) => formik.setFieldValue('password', text)}
+                />
             </View>
-            <TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={formik.handleSubmit}>
                 <View style={styles.button}>
                     <Text style={styles.textButton}>Iniciar Sesión</Text>
                 </View>
             </TouchableWithoutFeedback>
+            <Text style={styles.error}>{formik.errors.email}</Text>
+            <Text style={styles.error}>{formik.errors.password}</Text>
+            <Text style={styles.error}>{error}</Text>
             <View style={styles.containerOtherLoginTitle}>
                 <Text>Otros métodos de ingreso</Text>
             </View>
@@ -46,7 +92,7 @@ export default function LoginForm() {
                     <Text>¿No tienes una cuenta? </Text>
                 </View>
                 <View>
-                    <TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback onPress={registerNewUser}>
                         <Text style={styles.registerButtom}>Registrate</Text>
                     </TouchableWithoutFeedback>
                 </View>
@@ -56,12 +102,26 @@ export default function LoginForm() {
     )
 }
 
+function validationSchema() {
+    return{
+        email: Yup.string().required("Debe ingresar un correo electrónico"),
+        password: Yup.string().required("Debe ingresar la contraseña")
+    }
+}
+
+function initialValues() {
+    return{
+        email: "",
+        password: ""
+    }
+}
+
 const styles = StyleSheet.create({
     container: {
         marginHorizontal: 30
     },
     image: {
-        marginTop: 90,
+        marginTop: 50,
         marginBottom: 40,
         alignSelf: "center",
         height: 100,
@@ -126,5 +186,9 @@ const styles = StyleSheet.create({
         color: "#18395e",
         fontWeight: "bold",
         marginLeft: 30
+    },
+    error: {
+        textAlign: "center",
+        color: "red"
     }
 });

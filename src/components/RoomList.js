@@ -95,13 +95,13 @@ export default function RoomList() {
                     contentContainerStyle={styles.flatListContentContainer}
                     onEndReached={loadMore}
                     onEndReachedThreshold={0.1}
-                    ListFooterComponent={
-                        <ActivityIndicator
-                            size="large"
-                            style={styles.spinner}
-                            color="#18395e"
-                        />
-                    }
+                    // ListFooterComponent={
+                    //     <ActivityIndicator
+                    //         size="large"
+                    //         style={styles.spinner}
+                    //         color="#18395e"
+                    //     />
+                    // }
                 />
             </View>
         </View>

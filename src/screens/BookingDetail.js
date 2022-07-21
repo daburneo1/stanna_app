@@ -41,6 +41,13 @@ export default function BookingDetail(props) {
         setTotal(total)
     }
 
+    const goToPayment = () => {
+        navigation.navigate('PaymentDetail', {
+            id: room.id,
+            total: total
+        })
+    }
+
     return (
         <ScrollView>
             <SafeAreaView>
@@ -60,7 +67,7 @@ export default function BookingDetail(props) {
                                 <Text style={styles.dateHeader}>Fecha de Ingreso</Text>
                                 <TouchableWithoutFeedback onPress={() => showMode('date')}>
                                     <View style={styles.card}>
-                                        <View style={styles.spacing}>
+                                        <View>
                                             <View style={styles.bgStyles}>
                                                 <Text style={styles.dateText}><Icon
                                                     name="calendar"/> {room.fechaEntrada}
@@ -76,7 +83,7 @@ export default function BookingDetail(props) {
                                 <Text style={styles.dateHeader}>Fecha de Salida</Text>
                                 <TouchableWithoutFeedback onPress={() => showMode2('date2')}>
                                     <View style={styles.card}>
-                                        <View style={styles.spacing}>
+                                        <View>
                                             <View style={styles.bgStyles}>
                                                 <Text style={styles.dateText}><Icon name="calendar"/> {room.fechaSalida}
                                                 </Text>
@@ -179,6 +186,24 @@ export default function BookingDetail(props) {
                         <ItemMenu title={"Total"} text={total}/>
                     </View>
                 </View>
+                <View style={styles.header}>
+                    <View style={styles.filterListContainer}>
+                        <View style={styles.container}>
+                            <View style={{margin: 0, marginLeft: -10, marginRight: 170}}>
+                                <Text style={styles.dateHeader}>Método de pago</Text>
+                            </View>
+                        </View>
+                        <View style={styles.container}>
+                            <View style={{margin: 10, marginHorizontal: 20}}>
+                                <TouchableWithoutFeedback onPress={goToPayment}>
+                                    <View style={styles.button}>
+                                        <Icon name={"arrow-right"} />
+                                    </View>
+                                </TouchableWithoutFeedback>
+                            </View>
+                        </View>
+                    </View>
+                </View>
             </SafeAreaView>
         </ScrollView>)
 }
@@ -201,6 +226,7 @@ const styles = StyleSheet.create({
     filterListContainer: {
         flexDirection: "row",
         paddingHorizontal: 10,
+
     },
     card: {
         height: 35,

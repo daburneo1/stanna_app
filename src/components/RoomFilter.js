@@ -22,7 +22,7 @@ export default function RoomFilter (props) {
         setDate(currentDate);
 
         let tempDate = new Date (currentDate);
-        let fDate = tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear();
+        let fDate = tempDate.getFullYear() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getDate();
         setText(fDate)
         props.setFecha1(fDate)
         console.log("text1",fDate)
@@ -34,7 +34,7 @@ export default function RoomFilter (props) {
         setDate2(currentDate2);
 
         let tempDate2 = new Date (currentDate2);
-        let fDate2 = tempDate2.getDate() + '/' + (tempDate2.getMonth() + 1) + '/' + tempDate2.getFullYear();
+        let fDate2 = tempDate2.getFullYear() + '/' + (tempDate2.getMonth() + 1) + '/' + tempDate2.getDate();
         setText2(fDate2)
         props.setFecha2(fDate2)
         console.log("text2",fDate2)

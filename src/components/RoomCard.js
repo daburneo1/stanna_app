@@ -4,7 +4,11 @@ import Icon from "react-native-vector-icons/FontAwesome5"
 import { useNavigation } from "@react-navigation/native";
 
 export default function RoomCard(props) {
-    const { room } = props
+    const room = props.room
+    const fechaEntrada = props.fechaEntrada
+    const fechaSalida = props.fechaSalida
+    const adults = props.adults
+    const childrens = props.childrens
     const navigation = useNavigation();
 
     const goToRoom = () => {
@@ -18,7 +22,11 @@ export default function RoomCard(props) {
             ranking: room.ranking,
             descripcion: room.descripcion,
             servicios: room.servicios,
-            informacion: room.informacion
+            informacion: room.informacion,
+            fechaEntrada: fechaEntrada,
+            fechaSalida: fechaSalida,
+            adults: adults,
+            childrens: childrens
         })
     }
 

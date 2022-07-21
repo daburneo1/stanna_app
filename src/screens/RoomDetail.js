@@ -6,7 +6,6 @@ import Icon from "react-native-vector-icons/FontAwesome5"
 import Header from "../components/RoomDetails/Header"
 import Services from "../components/RoomDetails/Services";
 import Information from "../components/RoomDetails/Information";
-import SelectRoom from "../components/RoomDetails/SelectRoom";
 import useAuth from "../hooks/useAuth";
 import {useNavigation} from "@react-navigation/native";
 
@@ -55,7 +54,7 @@ export default function RoomDetail(props) {
             <Services services={room.servicios}/>
             <Information description={room.descripcion} information={room.informacion}/>
             <View>
-                <SelectRoomIf isAuth={auth}/>
+                <SelectRoomIf isAuth={auth} room={room}/>
             </View>
         </ScrollView>
     );
@@ -63,13 +62,38 @@ export default function RoomDetail(props) {
 
 function SelectRoomIf(props) {
     const navigate = useNavigation();
-    const {isAuth} = props;
+    const isAuth = props.isAuth;
+    const room = props.room
     const goToLogin = () => {
         navigate.navigate('Account')
     }
-    console.log(isAuth)
+    const goToBookingDetails = () => {
+        navigate.navigate('BookingDetail', {
+            id: room.id,
+            nombre: room.nombre,
+            tipo: room.tipo,
+            imagen: room.imagen,
+            precio: room.precio,
+            ranking: room.ranking,
+            descripcion: room.descripcion,
+            servicios: room.servicios,
+            informacion: room.informacion,
+            fechaEntrada: room.fechaEntrada,
+            fechaSalida: room.fechaSalida,
+            adults: room.adults,
+            childrens: room.childrens
+        })
+    }
+    // console.log(isAuth)
+    // console.log(room)
     if (isAuth) {
-        return <SelectRoom/>
+        return (
+            <TouchableWithoutFeedback onPress={goToBookingDetails}>
+                <View style={styles.button}>
+                    <Text style={styles.textButton}>Seleccionar habitación</Text>
+                </View>
+            </TouchableWithoutFeedback>
+        )
     } else {
         return (
             <TouchableWithoutFeedback onPress={goToLogin}>

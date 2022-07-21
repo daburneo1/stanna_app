@@ -85,7 +85,13 @@ export default function RoomList() {
                     data={rooms}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={(room) => String(room.id)}
-                    renderItem={({item}) => <RoomCard room={item}/>}
+                    renderItem={({item}) => <RoomCard
+                        room={item}
+                        fechaEntrada={fecha1}
+                        fechaSalida={fecha2}
+                        adults={adults}
+                        childrens={childrens}
+                    />}
                     contentContainerStyle={styles.flatListContentContainer}
                     onEndReached={loadMore}
                     onEndReachedThreshold={0.1}

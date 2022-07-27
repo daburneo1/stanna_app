@@ -109,16 +109,16 @@ const styles = StyleSheet.create({
     button: {
         backgroundColor: "#18395e",
         borderRadius: 15,
-        width: 150,
+        width: 170,
         height: 35,
-        marginHorizontal: "35%",
-        marginTop: 15
+        marginHorizontal: "30%",
+        marginTop: 20,
+        marginBottom: 20
     },
     textButton: {
         color: "#fff",
         textAlign: "center",
         textAlignVertical: "center",
-        fontWeight: "bold",
         margin: 7
     },
 })

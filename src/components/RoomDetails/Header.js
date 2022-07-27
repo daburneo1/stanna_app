@@ -18,7 +18,7 @@ export default function Header(props) {
                 <View style={styles.backgroundImage}>
                     <Image source={{uri: image}} style={styles.image}/>
                 </View>
-                <View style={{marginTop: 20, marginHorizontal: 20}}>
+                <View style={{marginTop: 20, marginHorizontal: 20, marginBottom: 0}}>
                     <View style={styles.title}>
                         <Text style={{fontSize: 20, fontWeight: "bold"}}>
                             {name}
@@ -52,6 +52,9 @@ const styles = StyleSheet.create({
         marginTop: 0,
         alignItems: "center",
         height: 300
+    },
+    title: {
+      marginBottom: 10
     },
     image: {
         height: '100%',

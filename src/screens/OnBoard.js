@@ -11,7 +11,7 @@ export default function OnBoard ({navigation}) {
                 style={styles.image}
             />
             <Text style={styles.title}>
-                HOTEL STANNA
+                HOTEL STANA
             </Text>
             <Text style={styles.slogan}>
                 Quédate en un lugar de ensueño

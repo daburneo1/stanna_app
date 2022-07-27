@@ -1,0 +1,1 @@
+{"ast":null,"code":"export var API_HOST = \"https://apimocha.com/stanna1\";","map":{"version":3,"sources":["C:/Users/Davicho/Documents/Proyectos/stanna_app/src/utils/constants.js"],"names":["API_HOST"],"mappings":"AAAA,OAAO,IAAMA,QAAQ,GAAG,8BAAjB","sourcesContent":["export const API_HOST = \"https://apimocha.com/stanna1\";"]},"metadata":{},"sourceType":"module"}

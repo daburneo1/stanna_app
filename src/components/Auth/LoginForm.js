@@ -88,7 +88,7 @@ export default function LoginForm() {
                     </TouchableWithoutFeedback>
                 </View>
             </View>
-            <View style={{flexDirection: "row", marginTop: 25, alignSelf: "center"}}>
+            <View style={{flexDirection: "row", marginTop: 20, alignSelf: "center" }}>
                 <View>
                     <Text>¿No tienes una cuenta? </Text>
                 </View>
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     registerButtom: {
         color: "#18395e",
         fontWeight: "bold",
-        marginLeft: 30
+        marginLeft: 5
     },
     error: {
         textAlign: "center",

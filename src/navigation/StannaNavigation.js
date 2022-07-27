@@ -17,18 +17,18 @@ const Tab = createBottomTabNavigator();
 export default function StannaNavigation() {
     return (
         <Tab.Navigator>
-            <Tab.Screen name="Home" component={HomeNavigation} options={{
-                tabBarLabel: "",
-                tabBarIcon: ({color, size}) => (
-                    <Icon name="home" color={color} size={size}/>
-                )
-            }}/>
             <Tab.Screen name="Bookings" component={BookingsNavigation} options={{
                 tabBarLabel: "",
                 tabBarIcon: ({color, size}) => (
                     <Icon name="briefcase" color={color} size={size}/>
                 )
 
+            }}/>
+            <Tab.Screen name="Home" component={HomeNavigation} options={{
+                tabBarLabel: "",
+                tabBarIcon: ({color, size}) => (
+                    <Icon name="home" color={color} size={size}/>
+                )
             }}/>
             <Tab.Screen name="Diary" component={DiaryNavigation} options={{
                 tabBarLabel: "",

@@ -37,7 +37,7 @@ export default function RoomCard(props) {
                     <View style={styles.bgStyles}>
                         <Image source={{uri: room.imagen}} style={styles.image}/>
                         <View style={styles.cardInfo}>
-                            <Text style={styles.ranking}> <Icon name="star" /> {room.ranking}</Text>
+                            {/*<Text style={styles.ranking}> <Icon name="star" /> {room.ranking}</Text>*/}
                             <Text style={styles.name}>{room.nombre}</Text>
                             <Text style={styles.type}> <Icon style={{color: "grey"}} name="bed" /> {room.tipo}</Text>
                             <View style={{flexDirection: "row"}}>
@@ -68,11 +68,11 @@ const styles = StyleSheet.create({
         backgroundColor: "#F5F5F5",
     },
     cardInfo:{
-        left: 130
+        left: 130,
     },
     image:{
         position: "absolute",
-        bottom: 2,
+        bottom: 0,
         left: 0 ,
         width: 120,
         height: 120,
@@ -86,17 +86,20 @@ const styles = StyleSheet.create({
     name:{
         color:"black",
         fontWeight: "bold",
-        fontSize: 15,
+        fontSize: 17,
         // paddingTop: 10,
-        marginTop: 10
+        marginTop: 10,
+        marginBottom: 15
     },
     type:{
         color:"black",
         fontSize: 13,
+        marginBottom: 15
     },
     price:{
         color:"#18395e",
         fontSize: 25,
+        marginBottom: 10
     },
 
 })

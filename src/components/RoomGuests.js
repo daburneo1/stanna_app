@@ -25,7 +25,7 @@ export default function RoomGuests(props) {
                                 <Pressable
                                     onPress={() => setAdults(Math.max(0, adults - 1))}
                                     style={styles.button}>
-                                    <Text style={{fontSize: 20, color: '#474747'}}>-</Text>
+                                    <Text style={{fontSize: 20, color: '#474747', marginBottom: 12}}>-</Text>
                                 </Pressable>
 
                                 <Text style={{marginHorizontal: 10, fontSize: 16}}>{adults}</Text>
@@ -33,7 +33,7 @@ export default function RoomGuests(props) {
                                 <Pressable
                                     onPress={() => {setAdults(adults + 1)}}
                                     style={styles.button}>
-                                    <Text style={{fontSize: 20, color: '#474747'}}>+</Text>
+                                    <Text style={{fontSize: 20, color: '#474747', marginBottom: 9}}>+</Text>
                                 </Pressable>
                             </View>
                         </View>
@@ -51,7 +51,7 @@ export default function RoomGuests(props) {
                                     <Pressable
                                         onPress={() => setChildrens(Math.max(0, children - 1))}
                                         style={styles.button}>
-                                        <Text style={{fontSize: 20, color: '#474747'}}>-</Text>
+                                        <Text style={{fontSize: 20, color: '#474747', marginBottom: 12}}>-</Text>
                                     </Pressable>
 
                                     <Text style={{marginHorizontal: 10, fontSize: 16}}>{children}</Text>
@@ -59,7 +59,7 @@ export default function RoomGuests(props) {
                                     <Pressable
                                         onPress={() => setChildrens(children + 1)}
                                         style={styles.button}>
-                                        <Text style={{fontSize: 20, color: '#474747'}}>+</Text>
+                                        <Text style={{fontSize: 20, color: '#474747', marginBottom: 9}}>+</Text>
                                     </Pressable>
                                 </View>
                             </View>
@@ -89,7 +89,6 @@ const styles = StyleSheet.create({
     dateHeader: {
         marginBottom: 5,
         color: "#18395e",
-        fontWeight: "bold"
     },
     button: {
         borderWidth: 1,

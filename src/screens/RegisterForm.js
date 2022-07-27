@@ -36,7 +36,7 @@ export default function LoginForm() {
                         <TextInput
                             style={styles.input}
                             value={formik.values.firstname}
-                            onChangeText={(text) => formik.setFieldValue('username', text)}
+                            onChangeText={(text) => formik.setFieldValue('firstname', text)}
                         />
                     </View>
                 </View>
@@ -51,7 +51,7 @@ export default function LoginForm() {
                         <TextInput
                             style={styles.input}
                             value={formik.values.lastname}
-                            onChangeText={(text) => formik.setFieldValue('password', text)}
+                            onChangeText={(text) => formik.setFieldValue('lastname', text)}
                         />
                     </View>
                 </View>
@@ -66,7 +66,7 @@ export default function LoginForm() {
                         <TextInput
                             style={styles.input}
                             value={formik.values.dni}
-                            onChangeText={(text) => formik.setFieldValue('password', text)}
+                            onChangeText={(text) => formik.setFieldValue('dni', text)}
                         />
                     </View>
                 </View>
@@ -81,7 +81,7 @@ export default function LoginForm() {
                         <TextInput
                             style={styles.numberInput}
                             value={formik.values.phone}
-                            onChangeText={(text) => formik.setFieldValue('password', text)}
+                            onChangeText={(text) => formik.setFieldValue('phone', text)}
                         />
                     </View>
                 </View>
@@ -96,7 +96,7 @@ export default function LoginForm() {
                         <TextInput
                             style={styles.input}
                             value={formik.values.email}
-                            onChangeText={(text) => formik.setFieldValue('password', text)}
+                            onChangeText={(text) => formik.setFieldValue('email', text)}
                         />
                     </View>
                 </View>
@@ -128,7 +128,7 @@ export default function LoginForm() {
                             style={styles.input}
                             secureTextEntry={true}
                             value={formik.values.passwordCheck}
-                            onChangeText={(text) => formik.setFieldValue('password', text)}
+                            onChangeText={(text) => formik.setFieldValue('passwordCheck', text)}
                         />
                     </View>
                 </View>
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
         borderWidth: 0.7,
         padding: 10,
         borderRadius: 10,
-        fontSize: 10,
+        fontSize: 9,
     },
     numberInput:{
         height: 30,
@@ -273,7 +273,7 @@ const styles = StyleSheet.create({
     registerButtom: {
         color: "#18395e",
         fontWeight: "bold",
-        marginLeft: 30
+        marginLeft: 5
     },
     error: {
         textAlign: "center",

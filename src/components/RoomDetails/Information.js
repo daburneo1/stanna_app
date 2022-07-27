@@ -10,7 +10,7 @@ export default function Information(props) {
 
     return (
         <View style={styles.container}>
-            <SafeAreaView>
+            <View>
                 <View style={styles.data}>
                     <Text style={{fontSize: 20, fontWeight: "bold", marginBottom: 10}}>Descripción</Text>
                     <Text style={styles.text}>{description}</Text>
@@ -19,7 +19,7 @@ export default function Information(props) {
                     <Text style={{fontSize: 20, fontWeight: "bold", marginBottom: 10, marginTop: 15}}>Check-in / Check-out</Text>
                     <Text style={styles.text}>{information}</Text>
                 </View>
-            </SafeAreaView>
+            </View>
         </View>
     )
 }

@@ -11,27 +11,25 @@ export default function Services(props) {
 
     return (
         <View style={styles.container}>
-            <SafeAreaView>
-                <View>
-                    <Text>
-                        La habitación incluye los siguientes servicios
-                    </Text>
+            <View>
+                <Text>
+                    La habitación incluye los siguientes servicios
+                </Text>
+            </View>
+            <View>
+                <View style={{flex: 1, marginTop: 20}}>
+                    <ServicesList services={services}/>
                 </View>
-                <View>
-                    <SafeAreaView style={{flex: 1}}>
-                        <ServicesList services={services}/>
-                    </SafeAreaView>
-                </View>
-            </SafeAreaView>
+            </View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-   container:{
-       marginHorizontal: 20
-   },
-   text:{
-       textAlign: "justify"
-   }
+    container: {
+        marginHorizontal: 20,
+    },
+    text: {
+        textAlign: "justify"
+    }
 });

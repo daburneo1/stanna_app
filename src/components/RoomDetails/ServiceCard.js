@@ -31,7 +31,7 @@ export default function ServiceCard(props) {
             borderRadius: 20,
             borderColor: "black",
             borderWidth: 1,
-            marginBottom: 20
+            marginBottom: 5
         },
         spacing: {
             flex: 1

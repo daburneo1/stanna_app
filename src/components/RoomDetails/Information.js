@@ -1,7 +1,5 @@
 import React from "react";
 import {StyleSheet, View, Text} from "react-native";
-import {SafeAreaView} from 'react-native-safe-area-context';
-import Icon from "react-native-vector-icons/FontAwesome5";
 
 export default function Information(props) {
 
@@ -11,7 +9,7 @@ export default function Information(props) {
     return (
         <View style={styles.container}>
             <View>
-                <View style={styles.data}>
+                <View>
                     <Text style={{fontSize: 20, fontWeight: "bold", marginBottom: 10}}>Descripción</Text>
                     <Text style={styles.text}>{description}</Text>
                 </View>
@@ -30,8 +28,5 @@ const styles = StyleSheet.create({
     },
     text:{
         textAlign: "justify"
-    },
-    data:{
-        // marginBottom: 30
     }
 });

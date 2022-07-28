@@ -2,15 +2,10 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/FontAwesome5"
 
-// import HomeScreen from "../screens/Home"
 import HomeNavigation from "./HomeNavigation";
-// import BookingsScreen from "../screens/Bookings";
 import BookingsNavigation from "./BookingsNavigation";
-// import DiaryScreen from "../screens/Diary";
 import DiaryNavigation from "./DiaryNavigation";
-// import CloudScreen from "../screens/Cloud";
 import AccountNavigation from "./AccountNavigation";
-import HomeScreen from "../screens/Home";
 
 const Tab = createBottomTabNavigator();
 

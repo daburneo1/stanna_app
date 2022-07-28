@@ -1,5 +1,5 @@
 export const user={
-    email: "daburneo1",
+    email: "daburneo1@utpl.edu.ec",
     password: "123456"
 }
 

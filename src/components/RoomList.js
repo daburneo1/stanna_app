@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {View, Text, FlatList, StyleSheet, TouchableWithoutFeedback, Pressable, ActivityIndicator} from "react-native";
+import React, {useState} from "react";
+import {View, Text, FlatList, StyleSheet, TouchableWithoutFeedback} from "react-native";
 
 import RoomCard from "./RoomCard";
 import RoomFilter from "./RoomFilter";
@@ -13,16 +13,8 @@ export default function RoomList() {
     const [fecha2, setFecha2] = useState('FECHA2')
     const [adults, setAdults] = useState(0)
     const [childrens, setChildrens] = useState(0)
-    const [load, setLoad] = useState(false)
-
-    // useEffect(() => {
-    //     (async () => {
-    //         await loadRooms();
-    //     })();
-    // }, []);
 
     const loadRooms = async () => {
-        // if (load) {
             try {
                 console.log(fecha1, fecha2, adults, childrens)
                 const response = await getRoomsApi();
@@ -47,9 +39,6 @@ export default function RoomList() {
             } catch (error) {
                 console.error(error)
             }
-        // }
-
-
     };
 
     const loadMore = () => {

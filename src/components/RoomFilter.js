@@ -1,9 +1,7 @@
-
 import React, {useState} from "react";
-import {View, Text, StyleSheet, Button, Platform, StatusBar, TouchableWithoutFeedback} from "react-native";
+import {View, Text, StyleSheet, Platform, TouchableWithoutFeedback} from "react-native";
 import DatePicker from '@react-native-community/datetimepicker';
 import Icon from "react-native-vector-icons/FontAwesome5";
-import InputSpinner from "react-native-input-spinner";
 
 export default function RoomFilter (props) {
 
@@ -59,14 +57,13 @@ export default function RoomFilter (props) {
                         <Text style={styles.dateHeader}>Fecha de Ingreso</Text>
                         <TouchableWithoutFeedback onPress={() => showMode('date')}>
                             <View style={styles.card}>
-                                <View style={styles.spacing}>
+                                <View>
                                     <View style={styles.bgStyles}>
                                         <Text style={styles.dateText}><Icon name="calendar" />   {text}</Text>
                                     </View>
                                 </View>
                             </View>
                         </TouchableWithoutFeedback>
-                        {/*<Button title={text} color="grey" onPress={() => showMode('date')}> </Button>*/}
                         {show && (
                             <DatePicker
                                 testID='datePicker'
@@ -90,7 +87,7 @@ export default function RoomFilter (props) {
                         <Text style={styles.dateHeader}>Fecha de Salida</Text>
                         <TouchableWithoutFeedback onPress={() => showMode2('date2')}>
                             <View style={styles.card}>
-                                <View style={styles.spacing}>
+                                <View>
                                     <View style={styles.bgStyles}>
                                         <Text style={styles.dateText}><Icon name="calendar" />   {text2}</Text>
                                     </View>
@@ -107,7 +104,6 @@ export default function RoomFilter (props) {
                                 onConfirm={(date2) => {
                                     setOpen(false)
                                     setDate2(date2)
-                                    // setFecha(date2)
                                 }}
                                 onCancel={() => {
                                     setOpen(false)
@@ -129,9 +125,6 @@ const styles = StyleSheet.create({
     card: {
         height: 35,
         width: 140
-    },
-    spacing: {
-        // paddingHorizontal: 30,
     },
     bgStyles: {
         borderRadius: 5,

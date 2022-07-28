@@ -1,8 +1,7 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { SafeAreaView } from 'react-native-safe-area-context'
-import useAuth from "../hooks/useAuth";
+import { View} from "react-native";
 
+import useAuth from "../hooks/useAuth";
 import LoginForm from "../components/Auth/LoginForm";
 import UserData from "../components/Auth/UserData";
 

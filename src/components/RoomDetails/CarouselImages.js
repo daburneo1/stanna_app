@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import {ActivityIndicator, Dimensions, Image, StyleSheet, Text, View} from "react-native";
+import {ActivityIndicator, Dimensions, Image, StyleSheet, View} from "react-native";
+
 import Carousel, { Pagination } from "react-native-snap-carousel";
 import { size } from 'lodash'
 

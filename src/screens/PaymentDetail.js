@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {View, Text, StyleSheet, Image} from "react-native";
 import {SafeAreaView} from 'react-native-safe-area-context';
+
 import useAuth from "../hooks/useAuth";
 
 export default function PaymentDetail(props) {

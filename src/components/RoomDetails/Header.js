@@ -1,8 +1,7 @@
 import React from "react";
-import {StyleSheet, View, Text, Image} from "react-native";
-import {SafeAreaView} from 'react-native-safe-area-context';
+import {StyleSheet, View, Text} from "react-native";
+
 import Icon from "react-native-vector-icons/FontAwesome5";
-// import { capitalize } from "lodash"
 
 export default function Header(props) {
 

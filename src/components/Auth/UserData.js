@@ -1,5 +1,5 @@
 import React from "react";
-import {Text, View, StyleSheet, Button, TouchableWithoutFeedback, SafeAreaView} from "react-native";
+import {Text, View, StyleSheet, TouchableWithoutFeedback, SafeAreaView} from "react-native";
 
 import useAuth from "../../hooks/useAuth";
 

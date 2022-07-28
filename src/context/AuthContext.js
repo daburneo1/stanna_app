@@ -1,7 +1,4 @@
 import React, { useState, createContext } from "react";
-import axios from "axios";
-
-import{API_HOST} from "../utils/constants"
 
 export const AuthContext = createContext({
     user: undefined,

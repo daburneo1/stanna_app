@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text, Image, TouchableWithoutFeedback } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5"
+
 import { useNavigation } from "@react-navigation/native";
 
 export default function RoomCard(props) {

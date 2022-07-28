@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import {Text, View, StyleSheet, TextInput, Button, Keyboard, Image, TouchableWithoutFeedback} from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome5";
+import {useNavigation} from "@react-navigation/native";
+import {Text, View, StyleSheet, TextInput, Image, TouchableWithoutFeedback} from "react-native";
+
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import {useNavigation} from "@react-navigation/native";
+
 import { user, userDetails } from "../../utils/userDB";
 import useAuth from "../../hooks/useAuth";
-import { AuthContext } from "../../context/AuthContext"
 
 export default function LoginForm() {
 
@@ -30,7 +30,7 @@ export default function LoginForm() {
                 login(userDetails)
                 console.log("Login correcto")
                 console.log(userDetails)
-                navigation.navigate("Bookings")
+                navigation.navigate("RoomDetail")
             }
         }
     });
@@ -81,13 +81,13 @@ export default function LoginForm() {
                         </View>
                     </TouchableWithoutFeedback>
                 </View>
-                <View>
-                    <TouchableWithoutFeedback>
-                        <View style={styles.buttonLogin}>
-                            <Image source={require('../../assets/appleLogo.png')} style={styles.authButtom}/>
-                        </View>
-                    </TouchableWithoutFeedback>
-                </View>
+                {/*<View>*/}
+                {/*    <TouchableWithoutFeedback>*/}
+                {/*        <View style={styles.buttonLogin}>*/}
+                {/*            <Image source={require('../../assets/appleLogo.png')} style={styles.authButtom}/>*/}
+                {/*        </View>*/}
+                {/*    </TouchableWithoutFeedback>*/}
+                {/*</View>*/}
             </View>
             <View style={{flexDirection: "row", marginTop: 20, alignSelf: "center" }}>
                 <View>

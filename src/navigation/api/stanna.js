@@ -5,6 +5,7 @@ export async function getRoomsApi(){
         const url=`${API_HOST}/rooms`;
         const response=await fetch(url);
         const result=await response.json();
+        console.log(result)
         return result;
     }
     catch(error){

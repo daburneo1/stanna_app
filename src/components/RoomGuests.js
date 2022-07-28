@@ -1,8 +1,5 @@
 import React, {useState} from "react";
 import {View, Text, StyleSheet, Pressable} from "react-native";
-import {useNavigation, useRoute} from '@react-navigation/native';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import InputSpinner from "react-native-input-spinner";
 
 export default function RoomGuests(props) {
 

@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {Image, Dimensions, ScrollView, StyleSheet, Text, TouchableWithoutFeedback, View} from "react-native";
-import {getRoomDetailsApi, getRoomsApi} from "../navigation/api/stanna";
+import {ScrollView, StyleSheet, Text, TouchableWithoutFeedback, View} from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5"
 
 import Header from "../components/RoomDetails/Header"
@@ -15,23 +14,9 @@ export default function RoomDetail(props) {
         navigation,
         route: {params},
     } = props;
-    // console.log(params)
-    // revisar
+
     const [room, setRoom] = useState(params);
     const {auth} = useAuth()
-
-    // useEffect(() => {
-    //     (async () => {
-    //         try{
-    //             const response = await getRoomDetailsApi(params.id);
-    //             setRoom({response})
-    //         } catch (e) {
-    //             console.error(e)
-    //             navigation.goBack()
-    //         }
-    //     })();
-    //     console.log(room)
-    // }, [params]);
 
     useEffect(() => {
         navigation.setOptions({
@@ -85,13 +70,12 @@ function SelectRoomIf(props) {
             childrens: room.childrens
         })
     }
-    // console.log(isAuth)
-    // console.log(room)
+
     if (isAuth) {
         return (
             <TouchableWithoutFeedback onPress={goToBookingDetails}>
                 <View style={styles.button}>
-                    <Text style={styles.textButton}>Seleccionar habitación</Text>
+                    <Text style={styles.textButton}>Solicitar reserva</Text>
                 </View>
             </TouchableWithoutFeedback>
         )
@@ -99,7 +83,7 @@ function SelectRoomIf(props) {
         return (
             <TouchableWithoutFeedback onPress={goToLogin}>
                 <View style={styles.button}>
-                    <Text style={styles.textButton}>Iniciar sesión</Text>
+                    <Text style={styles.textButton}>Solicitar reserva</Text>
                 </View>
             </TouchableWithoutFeedback>
         )

@@ -18,6 +18,7 @@ export default function RoomCard(props) {
             nombre: room.nombre,
             tipo: room.tipo,
             imagen: room.imagen,
+            imagenes: room.imagenes,
             precio: room.precio,
             ranking: room.ranking,
             descripcion: room.descripcion,

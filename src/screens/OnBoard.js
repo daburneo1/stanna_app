@@ -29,10 +29,12 @@ export default function OnBoard ({navigation}) {
 
 const styles = StyleSheet.create({
     image:{
-        marginTop: 150,
+        marginTop: 130,
         alignSelf: "center",
-        height: '25%',
-        width: '25%'
+        height: 200,
+        width: '53%',
+        resizeMode: "stretch",
+        tintColor: 'grey',
     },
 
     title:{

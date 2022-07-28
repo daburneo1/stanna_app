@@ -30,6 +30,7 @@ export default function LoginForm() {
                 login(userDetails)
                 console.log("Login correcto")
                 console.log(userDetails)
+                navigation.navigate("Bookings")
             }
         }
     });
@@ -125,8 +126,9 @@ const styles = StyleSheet.create({
         marginTop: 50,
         marginBottom: 40,
         alignSelf: "center",
-        height: 100,
-        width: 60
+        height: 110,
+        width: 120,
+        resizeMode: "stretch"
     },
     title: {
         textAlign: "center",

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {Image, ScrollView, StyleSheet, Text, TouchableWithoutFeedback, View} from "react-native";
+import {Image, Dimensions, ScrollView, StyleSheet, Text, TouchableWithoutFeedback, View} from "react-native";
 import {getRoomDetailsApi, getRoomsApi} from "../navigation/api/stanna";
 import Icon from "react-native-vector-icons/FontAwesome5"
 
@@ -8,6 +8,7 @@ import Services from "../components/RoomDetails/Services";
 import Information from "../components/RoomDetails/Information";
 import useAuth from "../hooks/useAuth";
 import {useNavigation} from "@react-navigation/native";
+import CarouselImages from "../components/RoomDetails/CarouselImages";
 
 export default function RoomDetail(props) {
     const {
@@ -17,7 +18,6 @@ export default function RoomDetail(props) {
     // console.log(params)
     // revisar
     const [room, setRoom] = useState(params);
-
     const {auth} = useAuth()
 
     // useEffect(() => {
@@ -50,7 +50,8 @@ export default function RoomDetail(props) {
 
     return (
         <ScrollView>
-            <Header name={room.nombre} image={room.imagen} ranking={room.ranking} type={room.tipo} price={room.precio}/>
+            <CarouselImages images={room.imagenes} />
+            <Header name={room.nombre} ranking={room.ranking} type={room.tipo} price={room.precio}/>
             <Services services={room.servicios}/>
             <Information description={room.descripcion} information={room.informacion}/>
             <View>

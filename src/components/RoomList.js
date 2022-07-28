@@ -29,12 +29,12 @@ export default function RoomList() {
                 const roomsArray = []
                 for await (const room of response) {
                     const roomDetails = await getRoomDetailsByUrlApi(room.url)
-
                     roomsArray.push({
                         id: roomDetails.id,
                         nombre: roomDetails.nombre,
                         tipo: roomDetails.tipo,
                         imagen: roomDetails.imagen,
+                        imagenes: roomDetails.imagenes,
                         precio: roomDetails.precio,
                         ranking: roomDetails.ranking,
                         descripcion: roomDetails.descripcion,

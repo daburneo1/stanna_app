@@ -16,7 +16,7 @@ export async function getRoomDetailsByUrlApi(url) {
     try {
         const response = await fetch(url);
         const result = await  response.json()
-        console.log(result)
+        // console.log(result)
         return result;
     } catch (e){
         throw(e)

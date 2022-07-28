@@ -1,5 +1,5 @@
 import React from "react";
-import {Text, View, StyleSheet, Button, TouchableWithoutFeedback} from "react-native";
+import {Text, View, StyleSheet, Button, TouchableWithoutFeedback, SafeAreaView} from "react-native";
 
 import useAuth from "../../hooks/useAuth";
 
@@ -8,7 +8,7 @@ export default function UserData () {
     const { auth, logout } = useAuth();
 
     return(
-        <View style={styles.content}>
+        <SafeAreaView style={styles.content}>
             <View style={styles.titleBlock}>
                 <Text style={styles.title}>Bienvenido, </Text>
                 <Text style={styles.title}>
@@ -27,7 +27,7 @@ export default function UserData () {
                     </View>
                 </TouchableWithoutFeedback>
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 
@@ -44,7 +44,7 @@ function ItemMenu(props) {
 const styles = StyleSheet.create({
     content:{
         marginHorizontal: 20,
-        marginTop: 20
+        marginTop: 80
     },
 
     titleBlock: {

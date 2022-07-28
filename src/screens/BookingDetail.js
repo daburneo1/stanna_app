@@ -101,14 +101,14 @@ export default function BookingDetail(props) {
                         <View style={styles.container}>
                             <View style={{margin: 5}}>
                                 <View style={styles.filterListContainer}>
-                                    <View>
-                                        <Text style={styles.dateHeader}>Adultos</Text>
+                                    <View style={{marginTop: 5}}>
+                                        <Text>Adultos</Text>
                                     </View>
                                     <View style={{flexDirection: 'row', alignItems: 'center', marginHorizontal: 15}}>
                                         <Pressable
                                             onPress={() => null}
                                             style={styles.button}>
-                                            <Text style={{fontSize: 20, color: '#474747'}}>-</Text>
+                                            <Text style={{fontSize: 20, color: '#474747', marginBottom: 9}}>-</Text>
                                         </Pressable>
 
                                         <Text style={{marginHorizontal: 10, fontSize: 16}}>{room.adults}</Text>
@@ -116,7 +116,7 @@ export default function BookingDetail(props) {
                                         <Pressable
                                             onPress={() => null}
                                             style={styles.button}>
-                                            <Text style={{fontSize: 20, color: '#474747'}}>+</Text>
+                                            <Text style={{fontSize: 20, color: '#474747', marginBottom: 9}}>+</Text>
                                         </Pressable>
                                     </View>
                                 </View>
@@ -126,8 +126,8 @@ export default function BookingDetail(props) {
                             <View style={styles.container}>
                                 <View style={{margin: 5, marginHorizontal: -15}}>
                                     <View style={styles.filterListContainer}>
-                                        <View>
-                                            <Text style={styles.dateHeader}>Niños</Text>
+                                        <View style={{marginTop: 5}}>
+                                            <Text>Niños</Text>
                                         </View>
 
                                         <View
@@ -135,7 +135,7 @@ export default function BookingDetail(props) {
                                             <Pressable
                                                 onPress={() => null}
                                                 style={styles.button}>
-                                                <Text style={{fontSize: 20, color: '#474747'}}>-</Text>
+                                                <Text style={{fontSize: 20, color: '#474747', marginBottom: 9}}>-</Text>
                                             </Pressable>
 
                                             <Text style={{marginHorizontal: 10, fontSize: 16}}>{room.childrens}</Text>
@@ -143,7 +143,7 @@ export default function BookingDetail(props) {
                                             <Pressable
                                                 onPress={() => null}
                                                 style={styles.button}>
-                                                <Text style={{fontSize: 20, color: '#474747'}}>+</Text>
+                                                <Text style={{fontSize: 20, color: '#474747', marginBottom: 9}}>+</Text>
                                             </Pressable>
                                         </View>
                                     </View>

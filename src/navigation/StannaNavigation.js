@@ -31,12 +31,12 @@ export default function StannaNavigation() {
                     <Icon name="calendar" color={color} size={size}/>
                 )
             }}/>
-            <Tab.Screen name="Cloud" component={AccountNavigation} options={{
-                tabBarLabel: "",
-                tabBarIcon: ({color, size}) => (
-                    <Icon name="user" color={color} size={size}/>
-                )
-            }}/>
+            {/*<Tab.Screen name="Cloud" component={AccountNavigation} options={{*/}
+            {/*    tabBarLabel: "",*/}
+            {/*    tabBarIcon: ({color, size}) => (*/}
+            {/*        <Icon name="user" color={color} size={size}/>*/}
+            {/*    )*/}
+            {/*}}/>*/}
         </Tab.Navigator>
     )
 }

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
-import {View, Text, StyleSheet, Image} from "react-native";
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { View, Text, StyleSheet, Image, TouchableWithoutFeedback } from "react-native";
+import { SafeAreaView } from 'react-native-safe-area-context';
+import {useNavigation} from "@react-navigation/native";
 
 import useAuth from "../hooks/useAuth";
 
@@ -13,6 +14,10 @@ export default function PaymentDetail(props) {
     const [room, setRoom] = useState(params)
 
     const {auth} = useAuth()
+
+    const payChecked = () => {
+        navigation.navigate('PayChecked')
+    }
 
     return (
         <SafeAreaView>
@@ -32,10 +37,12 @@ export default function PaymentDetail(props) {
                 <View style={{marginTop: 40}}>
                     <View style={styles.filterListContainer}>
                         <View style={styles.boxCcontainer}>
-                            <Image
-                                source={require('../assets/PayPal.png')}
-                                style={styles.imagePayment}
-                            />
+                            <TouchableWithoutFeedback onPress={payChecked}>
+                                    <Image
+                                        source={require('../assets/PayPal.png')}
+                                        style={styles.imagePayment}
+                                    />
+                            </TouchableWithoutFeedback>
                         </View>
                         <View style={styles.boxContainer}>
                             <Image

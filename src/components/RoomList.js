@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {View, Text, FlatList, StyleSheet, TouchableWithoutFeedback} from "react-native";
+import React, {useState, useEffect} from "react";
+import {View, Text, FlatList, StyleSheet, TouchableWithoutFeedback, ActivityIndicator} from "react-native";
 
 import RoomCard from "./RoomCard";
 import RoomFilter from "./RoomFilter";
@@ -9,40 +9,46 @@ import {getRoomDetailsByUrlApi, getRoomsApi} from "../navigation/api/stanna";
 export default function RoomList() {
 
     const [rooms, setRooms] = useState([]);
-    const [fecha1, setFecha1] = useState('FECHA')
-    const [fecha2, setFecha2] = useState('FECHA2')
+    const [fecha1, setFecha1] = useState('2022/7/28')
+    const [fecha2, setFecha2] = useState('2022/7/29')
     const [adults, setAdults] = useState(0)
     const [childrens, setChildrens] = useState(0)
 
-    const loadRooms = async () => {
-            try {
-                console.log(fecha1, fecha2, adults, childrens)
-                const response = await getRoomsApi();
-                const roomsArray = []
-                for await (const room of response) {
-                    const roomDetails = await getRoomDetailsByUrlApi(room.url)
-                    roomsArray.push({
-                        id: roomDetails.id,
-                        nombre: roomDetails.nombre,
-                        tipo: roomDetails.tipo,
-                        imagen: roomDetails.imagen,
-                        imagenes: roomDetails.imagenes,
-                        precio: roomDetails.precio,
-                        ranking: roomDetails.ranking,
-                        descripcion: roomDetails.descripcion,
-                        servicios: roomDetails.servicios,
-                        informacion: roomDetails.informacion
-                    });
-                }
+    useEffect(() => {
+        (async() => {
+            await loadRooms();
+        })();
+    }, []);
 
-                setRooms([...rooms, ...roomsArray]);
-            } catch (error) {
-                console.error(error)
+    const loadRooms = async () => {
+        try {
+            console.log(fecha1, fecha2, adults, childrens)
+            const response = await getRoomsApi();
+            const roomsArray = []
+            for await (const room of response) {
+                const roomDetails = await getRoomDetailsByUrlApi(room.url)
+                roomsArray.push({
+                    id: roomDetails.id,
+                    nombre: roomDetails.nombre,
+                    tipo: roomDetails.tipo,
+                    imagen: roomDetails.imagen,
+                    imagenes: roomDetails.imagenes,
+                    precio: roomDetails.precio,
+                    ranking: roomDetails.ranking,
+                    descripcion: roomDetails.descripcion,
+                    servicios: roomDetails.servicios,
+                    informacion: roomDetails.informacion
+                });
             }
+
+            setRooms([...rooms, ...roomsArray]);
+        } catch (error) {
+            console.error(error)
+        }
     };
 
     const loadMore = () => {
-        loadRooms()
+        // loadRooms()
     }
 
     return (
@@ -84,13 +90,13 @@ export default function RoomList() {
                     contentContainerStyle={styles.flatListContentContainer}
                     onEndReached={loadMore}
                     onEndReachedThreshold={0.1}
-                    // ListFooterComponent={
-                    //     <ActivityIndicator
-                    //         size="large"
-                    //         style={styles.spinner}
-                    //         color="#18395e"
-                    //     />
-                    // }
+                    ListFooterComponent={
+                        <ActivityIndicator
+                            size="large"
+                            style={styles.spinner}
+                            color="#18395e"
+                        />
+                    }
                 />
             </View>
         </View>
